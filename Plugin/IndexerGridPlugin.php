@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Lockstation\AdminReindex\Plugin;
+namespace Etechflow\AdminReindex\Plugin;
 
 use Magento\Framework\AuthorizationInterface;
 use Magento\Indexer\Block\Backend\Grid;
@@ -13,7 +13,7 @@ use Magento\Indexer\Block\Backend\Grid;
  *      surfaced as a quick link from the same mass action with id=__all__)
  *
  * Both options are hidden for admin users without the
- * Lockstation_AdminReindex::run ACL resource.
+ * Etechflow_AdminReindex::run ACL resource.
  */
 class IndexerGridPlugin
 {
@@ -24,7 +24,7 @@ class IndexerGridPlugin
 
     public function beforeToHtml(Grid $subject): void
     {
-        if (! $this->authorization->isAllowed('Lockstation_AdminReindex::run')) {
+        if (! $this->authorization->isAllowed('Etechflow_AdminReindex::run')) {
             return;
         }
 
@@ -36,16 +36,16 @@ class IndexerGridPlugin
         // If we've already added the item (block may render twice in some
         // admin flows), skip the second pass.
         try {
-            if ($massaction->getItem('lockstation_reindex')) {
+            if ($massaction->getItem('etechflow_reindex')) {
                 return;
             }
         } catch (\Throwable $e) {
             // Some Magento versions throw when an item doesn't exist; ignore.
         }
 
-        $massaction->addItem('lockstation_reindex', [
+        $massaction->addItem('etechflow_reindex', [
             'label'   => __('Reindex'),
-            'url'     => $subject->getUrl('lockstation_admin_reindex/indexer/massReindex'),
+            'url'     => $subject->getUrl('etechflow_admin_reindex/indexer/massReindex'),
             'confirm' => __('Are you sure you want to reindex the selected items? This can take a few minutes on large catalogs.'),
         ]);
     }

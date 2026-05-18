@@ -7,7 +7,7 @@
                 <resource id="Magento_Backend::system">
                     <resource id="Magento_Backend::tools">
                         <resource id="Magento_Indexer::index">
-                            <resource id="Lockstation_AdminReindex::run"
+                            <resource id="Etechflow_AdminReindex::run"
                                       title="Run Indexer Reindex from Admin"
                                       sortOrder="100"/>
                         </resource>

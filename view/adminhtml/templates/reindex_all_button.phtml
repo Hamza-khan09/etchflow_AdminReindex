@@ -3,7 +3,7 @@ declare(strict_types=1);
 /** @var \Magento\Backend\Block\Template $block */
 /** @var \Magento\Framework\Escaper $escaper */
 
-$url     = $block->getUrl('lockstation_admin_reindex/indexer/massReindex');
+$url     = $block->getUrl('etechflow_admin_reindex/indexer/massReindex');
 $formKey = $block->getFormKey();
 $confirm = $escaper->escapeJs(__('Reindex ALL indexers? This can take several minutes on large catalogs.'));
 ?>

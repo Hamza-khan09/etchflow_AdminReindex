@@ -1,4 +1,4 @@
-# Lockstation_AdminReindex
+# Etechflow_AdminReindex
 
 Run Magento indexers from the **admin panel** instead of the command line. Replicates the behaviour of MagePal's "Reindex for Magento 2" extension.
 
@@ -31,15 +31,15 @@ Adds two things to **System → Tools → Index Management**:
 
 ```bash
 # Option A — Composer
-composer require etchflow/module-admin-reindex:^1.0
-bin/magento module:enable Lockstation_AdminReindex
+composer require etechflow/module-admin-reindex:^1.0
+bin/magento module:enable Etechflow_AdminReindex
 bin/magento setup:upgrade
 bin/magento setup:di:compile      # production mode only
 bin/magento cache:flush
 
 # Option B — Manual drop-in
-cp -r Lockstation_AdminReindex app/code/Lockstation/AdminReindex
-bin/magento module:enable Lockstation_AdminReindex
+cp -r Etechflow_AdminReindex app/code/Etechflow/AdminReindex
+bin/magento module:enable Etechflow_AdminReindex
 bin/magento setup:upgrade
 bin/magento setup:di:compile      # production mode only
 bin/magento cache:flush
@@ -51,7 +51,7 @@ No database tables, no config rows — pure admin overlay.
 
 A new ACL resource appears under **Stores → Permissions → User Roles → System → Tools → Index Management**:
 
-- `Lockstation_AdminReindex::run` — required to see the *Reindex* mass action and *Reindex All* button, and to POST to the run endpoint.
+- `Etechflow_AdminReindex::run` — required to see the *Reindex* mass action and *Reindex All* button, and to POST to the run endpoint.
 
 Both the visible UI and the controller enforce this resource server-side. A limited user without it sees the original stock Index Management page exactly as before.
 
@@ -76,7 +76,7 @@ Both the visible UI and the controller enforce this resource server-side. A limi
 
 1. A plugin (`Plugin/IndexerGridPlugin.php`) on `Magento\Indexer\Block\Backend\Grid::beforeToHtml()` injects the **Reindex** item into the grid's mass-action block.
 2. A layout override on `indexer_indexer_list.xml` adds the **Reindex All** button into the page's action toolbar.
-3. Both POST to `/admin/lockstation_admin_reindex/indexer/massReindex` — the **Reindex All** button passes `indexer_ids=__all__` as a shortcut sentinel; the mass action posts the actual selected IDs.
+3. Both POST to `/admin/etechflow_admin_reindex/indexer/massReindex` — the **Reindex All** button passes `indexer_ids=__all__` as a shortcut sentinel; the mass action posts the actual selected IDs.
 4. `Controller/Adminhtml/Indexer/MassReindex.php` validates the form-key + ACL, resolves each ID through `Magento\Framework\Indexer\IndexerRegistry`, and runs `$indexer->reindexAll()` for each one.
 5. Success messages are surfaced through Magento's standard `MessageManager`, so admin sees the same green/red banner pattern they're used to.
 
@@ -92,13 +92,13 @@ The module **does not** override the Index Management grid itself, so any change
 ## Uninstall
 
 ```bash
-bin/magento module:disable Lockstation_AdminReindex
+bin/magento module:disable Etechflow_AdminReindex
 bin/magento cache:flush
 
 # Composer:
-composer remove etchflow/module-admin-reindex
+composer remove etechflow/module-admin-reindex
 # Manual:
-rm -rf app/code/Lockstation/AdminReindex
+rm -rf app/code/Etechflow/AdminReindex
 bin/magento setup:upgrade
 bin/magento cache:flush
 ```
@@ -108,7 +108,7 @@ Nothing to clean from the database — the module doesn't add tables or persist 
 ## File layout
 
 ```
-Lockstation_AdminReindex/
+Etechflow_AdminReindex/
 ├── registration.php
 ├── composer.json
 ├── LICENSE

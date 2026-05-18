@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Lockstation\AdminReindex\Controller\Adminhtml\Indexer;
+namespace Etechflow\AdminReindex\Controller\Adminhtml\Indexer;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -13,7 +13,7 @@ use Magento\Indexer\Model\Indexer\CollectionFactory as IndexerCollectionFactory;
 use Psr\Log\LoggerInterface;
 
 /**
- * POST: /admin/lockstation_admin_reindex/indexer/massReindex
+ * POST: /admin/etechflow_admin_reindex/indexer/massReindex
  *
  * Receives the indexer IDs the admin selected on the Index Management grid
  * (or `indexer_ids=__all__` for the Reindex All shortcut), rebuilds each one,
@@ -22,7 +22,7 @@ use Psr\Log\LoggerInterface;
  */
 class MassReindex extends Action implements HttpPostActionInterface
 {
-    public const ADMIN_RESOURCE = 'Lockstation_AdminReindex::run';
+    public const ADMIN_RESOURCE = 'Etechflow_AdminReindex::run';
 
     public function __construct(
         Context $context,
@@ -72,7 +72,7 @@ class MassReindex extends Action implements HttpPostActionInterface
                 $succeeded[] = sprintf('%s (%.2fs)', $indexer->getTitle() ?: $indexerId, $duration);
             } catch (\Throwable $e) {
                 $failures[$indexerId] = $e->getMessage();
-                $this->logger->error('[lockstation_admin_reindex] ' . $indexerId . ': ' . $e->getMessage());
+                $this->logger->error('[etechflow_admin_reindex] ' . $indexerId . ': ' . $e->getMessage());
             }
         }
 

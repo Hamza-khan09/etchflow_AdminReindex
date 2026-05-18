@@ -2,8 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="admin">
-        <route id="lockstation_admin_reindex" frontName="lockstation_admin_reindex">
-            <module name="Lockstation_AdminReindex" before="Magento_Backend"/>
+        <route id="etechflow_admin_reindex" frontName="etechflow_admin_reindex">
+            <module name="Etechflow_AdminReindex" before="Magento_Backend"/>
         </route>
     </router>
 </config>

@@ -4,9 +4,9 @@
     <body>
         <referenceContainer name="page.actions.toolbar">
             <block class="Magento\Backend\Block\Template"
-                   name="lockstation.admin_reindex.reindex_all_button"
-                   template="Lockstation_AdminReindex::reindex_all_button.phtml"
-                   acl="Lockstation_AdminReindex::run"/>
+                   name="etechflow.admin_reindex.reindex_all_button"
+                   template="Etechflow_AdminReindex::reindex_all_button.phtml"
+                   acl="Etechflow_AdminReindex::run"/>
         </referenceContainer>
     </body>
 </page>

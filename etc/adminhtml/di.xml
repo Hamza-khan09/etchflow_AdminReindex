@@ -9,8 +9,8 @@
         in _prepareLayout but BEFORE the HTML is rendered.
     -->
     <type name="Magento\Indexer\Block\Backend\Grid">
-        <plugin name="lockstation_admin_reindex_inject_actions"
-                type="Lockstation\AdminReindex\Plugin\IndexerGridPlugin"
+        <plugin name="etechflow_admin_reindex_inject_actions"
+                type="Etechflow\AdminReindex\Plugin\IndexerGridPlugin"
                 sortOrder="100"/>
     </type>
 </config>
