@@ -31,7 +31,7 @@ Adds two things to **System → Tools → Index Management**:
 
 ```bash
 # Option A — Composer
-composer require lockstation/module-admin-reindex:^1.0
+composer require etchflow/module-admin-reindex:^1.0
 bin/magento module:enable Lockstation_AdminReindex
 bin/magento setup:upgrade
 bin/magento setup:di:compile      # production mode only
@@ -96,7 +96,7 @@ bin/magento module:disable Lockstation_AdminReindex
 bin/magento cache:flush
 
 # Composer:
-composer remove lockstation/module-admin-reindex
+composer remove etchflow/module-admin-reindex
 # Manual:
 rm -rf app/code/Lockstation/AdminReindex
 bin/magento setup:upgrade
